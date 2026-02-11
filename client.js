@@ -1,14 +1,7 @@
 // client.js
-const socket = io();oll
-llllllllllvar messages = document.getElementById('messages');
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  if (input.value) {
-    socket.emit('chat message', input.value);
-    input.value = '';
+const socket = io()oi
+ìvar messages = ì
+  if (input.value) ì
   }
 });
 
