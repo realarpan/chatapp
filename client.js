@@ -1,7 +1,6 @@
 // client.js
-const socket = io();
-
-var messages = document.getElementById('messages');
+const socket = io();oll
+llllllllllvar messages = document.getElementById('messages');
 var form = document.getElementById('form');
 var input = document.getElementById('input');
 
