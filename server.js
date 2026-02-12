@@ -1,33 +1,35 @@
-// server.js
-const express = require('express');
-const http = require('http');
-const path = require('path');
-const { Server } = require('socket.io');
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static(__dirname));
+app.use(express.static("public"));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+let users = {};
 
-io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
+io.on("connection", (socket) => {
+  console.log("User connected:", socket.id);
 
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
+  socket.on("join", (username) => {
+    users[socket.id] = username;
+    io.emit("user-list", Object.values(users));
   });
 
-  socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
+  socket.on("message", (data) => {
+    io.emit("message", {
+      user: users[socket.id],
+      text: data,
+      time: new Date().toLocaleTimeString()
+    });
+  });
+
+  socket.on("disconnect", () => {
+    delete users[socket.id];
+    io.emit("user-list", Object.values(users));
   });
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+server.listen(3000, () => console.log("Server running on port 3000"));
