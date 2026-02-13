@@ -31,6 +31,8 @@ This project demonstrates authentication, role-based access (Admin/User), and re
 ---
 
 ## 📂 Project Structure
+
+```
 ├── src/
 │   ├── components/
 │   │   ├── Auth.jsx
@@ -45,6 +47,7 @@ This project demonstrates authentication, role-based access (Admin/User), and re
 ├── package.json
 ├── README.md
 └── vite.config.js
+```
 
 ---
 
