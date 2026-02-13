@@ -31,21 +31,20 @@ This project demonstrates authentication, role-based access (Admin/User), and re
 ---
 
 ## 📂 Project Structure
-modern-chat/
-├── index.html
-├── package.json
-├── vite.config.js
+├── src/
+│   ├── components/
+│   │   ├── Auth.jsx
+│   │   └── Chat.jsx
+│   ├── App.jsx
+│   ├── firebase.js
+│   ├── index.css
+│   └── main.jsx
 ├── .env
 ├── .gitignore
-└── src/
-├── components/
-│ ├── Auth.jsx
-│ └── Chat.jsx
-├── App.jsx
-├── firebase.js
-├── index.css
-└── main.jsx
-
+├── index.html
+├── package.json
+├── README.md
+└── vite.config.js
 
 ---
 
